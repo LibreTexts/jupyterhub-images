@@ -64,7 +64,6 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
 }
 
 #member ul.members > li.member {
@@ -92,6 +91,7 @@
   height: 100%;
   border-radius: 100%;
   object-fit: contain;
+  border: 0.5px solid #cecece;
 }
 
 #member ul.members > li.member > .member-description {
