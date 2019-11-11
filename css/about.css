@@ -109,4 +109,5 @@
 
 #member ul.members > li.member > .member-description .subtitle {
   font-size: 14px;
+  line-height: 14px;
 }
