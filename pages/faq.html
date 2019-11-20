@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>JupyterHub</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/hub/static/css/style.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/hub/static/external/css/custom.css" type="text/css">
+    <link rel="stylesheet" href="/hub/static/external/css/faq.css" type="text/css"/>
+    <script src="/hub/static/components/requirejs/require.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/hub/static/components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/hub/static/components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      require.config({
+        // not sure if we need this
+        // urlArgs: "v={{version_hash}}",
+        baseUrl: '/hub/static/js',
+        paths: {
+          components: '../components',
+          jquery: '../components/jquery/dist/jquery.min',
+          bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
+          moment: "../components/moment/moment",
+        },
+        shim: {
+          bootstrap: {
+            deps: ["jquery"],
+            exports: "bootstrap"
+          },
+        }
+      });
+    </script>
+
+    <script type="text/javascript">
+      window.jhdata = {
+        base_url: '/hub',
+        prefix: '/',
+        admin_access: false,
+        options_form: false,
+      }
+    </script>
+  </head>
+
+  <body id="faq-page">
+    <noscript>
+      <div id='noscript'>
+        JupyterHub requires JavaScript.<br>
+        Please enable it to proceed.
+      </div>
+    </noscript>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span id="jupyterhub-logo" class="pull-left">
+            <a href="/"><img src='/logo' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
+          </span>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="thenavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="/hub/static/external/pages/about.html">About</a></li>
+            <li><a href="/hub/static/external/pages/faq.html">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- start the main block here -->
+    <h1>Frequently Asked Questions</h1>
+    <section id="faq">
+      <h1>For Instructors</h1>
+      <h2>Can I create custom persistent conda environments in my user account?</h2>
+      <p>Please visit <a href="https://github.com/LibreTexts/default-env#creating-your-own-custom-conda-environment" target="_blank">here</a> for information on creating custom conda environments.</p>
+
+      <h2>Can packages be added or upgraded in the default environment?</h2>
+      <p>Yes, please open a new issue explaining your needs or a pull request adding/upgrading your packages at the <a href="https://github.com/LibreTexts/default-env" target="_blank">default-env</a> repository.</p>
+
+      <h2>How do I distribute files to students?</h2>
+      <p>You can distribute files using <a href="https://jupyterhub.github.io/nbgitpuller/index.html" target="_blank">nbgitpuller</a>. Please store your files in a GitHub repository and we will set up a custom environment that will update the files whenever a student spawns a server. This is a good option since students don't need to understand git, but keep in mind that nbgitpuller does have some <a href="https://jupyterhub.github.io/nbgitpuller/topic/automatic-merging.html" target="_blank">limitations</a>. Other options include hosting your files on an external site, like GitHub or Google Drive, where students can download them.</p>
+
+      <h2>How do I set up custom environments for my class?</h2>
+      <p>If you are an instructor who wants to set up an environment with custom packages and kernels for your course, please create one of the following configuration files and notify us of it by email at <a href="mailto:jupyterteam@ucdavis.edu">jupyterteam@ucdavis.edu</a>:</p>
+      <ol>
+        <li>One or more configuration files supported by <a href="https://repo2docker.readthedocs.io/" target="_blank">repo2docker</a> that list your desired packages. Supported configuration files are listed <a href="https://repo2docker.readthedocs.io/en/latest/config_files.html" target="_blank">here</a>.</li>
+        <li>A <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">Dockerfile</a>. We recommend using or building on top of a <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html" target="_blank">Jupyter Docker Stack</a> which are already available to the community.</li>
+      </ol>
+      <p>For an example of packages that could be included, please look at the <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#core-stacks" target="_blank">Jupyter Core Stacks</a>.</p>
+    </section>
+  </body>
+</html>

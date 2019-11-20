@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>JupyterHub</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/hub/static/css/style.min.css" type="text/css"/>
+    <script src="/hub/static/components/requirejs/require.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/hub/static/components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/hub/static/components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+      require.config({
+        // not sure if we need this
+        // urlArgs: "v={{version_hash}}",
+        baseUrl: '/hub/static/js',
+        paths: {
+          components: '../components',
+          jquery: '../components/jquery/dist/jquery.min',
+          bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
+          moment: "../components/moment/moment",
+        },
+        shim: {
+          bootstrap: {
+            deps: ["jquery"],
+            exports: "bootstrap"
+          },
+        }
+      });
+    </script>
+
+    <script type="text/javascript">
+      window.jhdata = {
+        base_url: '/hub',
+        prefix: '/',
+        admin_access: false,
+        options_form: false,
+      }
+    </script>
+  </head>
+
+  <body>
+    <noscript>
+      <div id='noscript'>
+        JupyterHub requires JavaScript.<br>
+        Please enable it to proceed.
+      </div>
+    </noscript>
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <span id="jupyterhub-logo" class="pull-left">
+            <a href="/"><img src='/logo' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
+          </span>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="thenavbar">
+          <ul class="nav navbar-nav">
+            <li><a href="/hub/static/external/pages/about.html">About</a></li>
+            <li><a href="/hub/static/external/pages/faq.html">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- the announcement -->
+    <!--
+      <div class="container text-center announcement alert alert-warning">
+        he
+      </div>
+     -->
+
+     <!-- start the main block here -->
+
+  </body>
+</html>

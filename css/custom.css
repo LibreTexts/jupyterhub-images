@@ -1,0 +1,13 @@
+#jupyterhub-logo a::after {
+  content: 'beta';
+  color: red;
+  position: relative;
+  right: 12px;
+  bottom: -12px;
+  font-size: 8px;
+}
+
+#jupyterhub-logo a:hover {
+  text-decoration: none;
+  cursor: normal;
+}
