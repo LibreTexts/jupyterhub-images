@@ -78,6 +78,46 @@
     <h1>Frequently Asked Questions</h1>
     <section id="faq">
       <h1>For Instructors</h1>
+      <h2>Software I need is not installed or up-to-date on the JupyterHub, how
+        do I install or upgrade the software?</h2>
+      <p>There are a few ways to install the software you need.</p>
+      <ul>
+        <li>Request the software to be installed into the default JupyterHub
+          envrionment by <a href="https://github.com/LibreTexts/metalc/issue">
+          opening an issue</a> or <a href="mailto:jupyterteam@ucdavis.edu">
+          emailing us</a> with your request. Provide as much information about the
+          software as possible (version number, Conda Forge URL, etc.). Note
+          that we will only install software available in the
+          <a href="https://packages.ubuntu.com/bionic/">Ubuntu 18.04 official
+          APT repositories</a> (no PPAs),
+          <a href="https://docs.anaconda.com/anaconda/packages/py3.8_linux-64/">
+          Anaconda's Linux Package List</a>, or
+          <a href="https://conda-forge.org/feedstocks/">Conda Forge</a>. It may
+          not always be possible to install the package if there are any
+          resulting incompatibilites with the set of packages we currently
+          support, but we will try to accomdate your needs.
+        </li>
+        <li>Install the package yourself by launching a terminal in your
+          JupyterHub session and running the commands to install the package.
+          Installing the via conda should be the preferred approach, but any
+          other methods that install into your home directory are supported.
+          Note that if installing with conda with a simple <pre>conda install
+          x</pre> is used, this package will not necessareily be available in
+          future sessions due to the installation location
+          <pre>/opt/conda</pre> not being persistent. You can setup conda to
+          install to your home directory to guarante persistence, see
+          <a href="https://github.com/LibreTexts/default-env#creating-your-own-custom-conda-environment"
+          target="_blank">here</a>
+        </li>
+        <li>Create a repository that works with
+          <a href="https://github.com/jupyter/repo2docker">repo2docker</a>.
+          You'll want to start with one of the
+          <a href="https://github.com/jupyter/docker-stacks">Jupyter Docker
+          stacks</a> and build off of it. Before spending effort developing
+          this <a href="mailto:jupyterteam@ucdavis.edu"> contact us</a> to
+          discuss your plans.
+        </li>
+      </ul>
       <h2>Can I create custom persistent conda environments in my user account?</h2>
       <p>Please visit <a href="https://github.com/LibreTexts/default-env#creating-your-own-custom-conda-environment" target="_blank">here</a> for information on creating custom conda environments.</p>
 
