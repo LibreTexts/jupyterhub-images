@@ -1,99 +1,210 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <meta charset="utf-8">
 
-    <title>JupyterHub</title>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="utf-8">
 
-    <link rel="stylesheet" href="/hub/static/css/style.min.css" type="text/css"/>
-    <link rel="stylesheet" href="/hub/static/external/css/custom.css" type="text/css">
-    <link rel="stylesheet" href="/hub/static/external/css/faq.css" type="text/css"/>
-    <script src="/hub/static/components/requirejs/require.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/hub/static/components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/hub/static/components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-    <script>
-      require.config({
-        // not sure if we need this
-        // urlArgs: "v={{version_hash}}",
-        baseUrl: '/hub/static/js',
-        paths: {
-          components: '../components',
-          jquery: '../components/jquery/dist/jquery.min',
-          bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
-          moment: "../components/moment/moment",
+  <title>JupyterHub</title>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/hub/static/css/style.min.css" type="text/css" />
+  <link rel="stylesheet" href="/hub/static/external/css/custom.css" type="text/css">
+  <link rel="stylesheet" href="/hub/static/external/css/faq.css" type="text/css" />
+  <script src="/hub/static/components/requirejs/require.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/hub/static/components/jquery/dist/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/hub/static/components/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"
+    charset="utf-8"></script>
+  <script>
+    require.config({
+      // not sure if we need this
+      // urlArgs: "v={{version_hash}}",
+      baseUrl: '/hub/static/js',
+      paths: {
+        components: '../components',
+        jquery: '../components/jquery/dist/jquery.min',
+        bootstrap: '../components/bootstrap/dist/js/bootstrap.min',
+        moment: "../components/moment/moment",
+      },
+      shim: {
+        bootstrap: {
+          deps: ["jquery"],
+          exports: "bootstrap"
         },
-        shim: {
-          bootstrap: {
-            deps: ["jquery"],
-            exports: "bootstrap"
-          },
-        }
-      });
-    </script>
-
-    <script type="text/javascript">
-      window.jhdata = {
-        base_url: '/hub',
-        prefix: '/',
-        admin_access: false,
-        options_form: false,
       }
-    </script>
-  </head>
+    });
+  </script>
 
-  <body id="faq-page">
-    <noscript>
-      <div id='noscript'>
-        JupyterHub requires JavaScript.<br>
-        Please enable it to proceed.
+  <script type="text/javascript">
+    window.jhdata = {
+      base_url: '/hub',
+      prefix: '/',
+      admin_access: false,
+      options_form: false,
+    }
+  </script>
+</head>
+
+<body id="faq-page">
+  <noscript>
+    <div id='noscript'>
+      JupyterHub requires JavaScript.<br>
+      Please enable it to proceed.
+    </div>
+  </noscript>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <span id="jupyterhub-logo" class="pull-left">
+          <a href="/"><img src='/logo' alt='JupyterHub' class='jpy-logo' title='Home' /></a>
+        </span>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar"
+          aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
-    </noscript>
 
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <span id="jupyterhub-logo" class="pull-left">
-            <a href="/"><img src='/logo' alt='JupyterHub' class='jpy-logo' title='Home'/></a>
-          </span>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-
-        <div class="collapse navbar-collapse" id="thenavbar">
-          <ul class="nav navbar-nav">
-            <li><a href="/hub/static/external/pages/about.html">About</a></li>
-            <li><a href="/hub/static/external/pages/faq.html">FAQ</a></li>
-          </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="thenavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/hub/static/external/pages/about.html">About</a></li>
+          <li><a href="/hub/static/external/pages/faq.html">FAQ</a></li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- start the main block here -->
-    <h1>Frequently Asked Questions</h1>
-    <section id="faq">
-      <h1>For Instructors</h1>
-      <h2>Can I create custom persistent conda environments in my user account?</h2>
-      <p>Please visit <a href="https://github.com/LibreTexts/default-env#creating-your-own-custom-conda-environment" target="_blank">here</a> for information on creating custom conda environments.</p>
+  <!-- start the main block here -->
+  <h1>Frequently Asked Questions</h1>
+  <section id="faq">
+    <h2>How do I access RStudio?</h2>
+    <p>
+      To change your Jupyter interface to RStudio, you can either select RStudio from the Jupyter launcher or change
+      <code>/lab</code> at the end of the webpage url to <code>/rstudio</code>. It should look like
+      <code>https://jupyter.libretexts.org/user/'your-email'/rstudio/</code>. To switch back, just revert
+      <code>/rstudio</code> to <code>/lab</code>. Note that all the same packages and
+      kernels are available in either of the <code>/lab</code> or <code>/rstudio</code> interfaces.
+    </p>
+    <h2>Can I install additional packages to my account?</h2>
+    <p>
+      You are free to install any addtional packages available through conda or through language specific package
+      managers such as those for SageMath and Julia. However, these installations are not permanent and they will be
+      wiped anytime your server restarts. For permanent installations, you will want to create a conda environment (see
+      below) for Pythonor request the JupyterTeam to install the packages for you.
+    </p>
+    <h2>How can I permanently install additional packages and create custom Jupyter notebooks?</h2>
+    <p>
+      The best way to permanently install new packages onto your account is through conda environments.
+      Using conda environments, you may also build Jupyter notebooks which contain only the programming language and
+      packages that you need. Follow the steps below to create one.
+    </p>
+    <ol>
+      <li>
+        In the top left corner, open a terminal by going to File->New->Terminal or open a New Launcher (ctrl+shift+L)
+        and select terminal from the 'other' section.
+      </li>
+      <li>
+        Within the terminal, use the command <code>conda create -n 'your_env_name' 'kernel' 'packages'</code> to create
+        your environment. A simple example would be
+        <code>conda create -n scipkg ipykernel numpy pandas matplotlib</code>. Here, we create an environment called
+        <code>scipkg</code> which contains the <code>ipykernel</code> kernel along with python packages
+        <code>numpy</code>, <code>pandas</code>, and <code>matplotlib</code>. You may include any packages which are
+        available through conda. See below for a brief list of some of the Jupyter kernels available in conda;
+      </li>
+      <table>
+        <tr>
+          <th>Language</th>
+          <th>Jupyter Kernel</th>
+        </tr>
+        <tr>
+          <td>Python</td>
+          <td>ipykernel</td>
+        </tr>
+        <tr>
+          <td>R</td>
+          <td>r-irkernel</td>
+        </tr>
+        <tr>
+          <td>C++</td>
+          <td>xeus-cling</td>
+        </tr>
+        <tr>
+          <td>Octave</td>
+          <td>octave_kernel</td>
+        </tr>
+      </table>
+      <p>
+        <em>
+          Do not worry if you recieve a warning about newer versions of conda when running the
+          <code>conda create</code> command. Just proceed through the installation by pressing <code>y</code> or by
+          initially running <code>conda create</code> with a <code>-y</code> flag.
+        </em>
+      </p>
+      <li>
+        Activate your environment using <code>conda activate 'your_env_name'</code>. You should now see
+        <code>(your_env_name)</code> at the beginning of the terminal prompt. This indicates that the environment is
+        active. Note that the environment will only be active within that specific terminal session. To deactivate, run
+        <code>conda deactivate</code>.
+      </li>
+      <li>
+        If you specified a Jupyter kernel then you may run your environment as a Jupyter notebook. Open the launcher
+        (ctrl+shift+L) and select your environment from there. Using the <code>scipkg</code> example from earlier, the
+        environment will appear as <code>Python [conda env:.conda-scipkg]</code>. You may have to wait a little bit for
+        the icon to appear; refresh the webpage if needed.
+      </li>
+    </ol>
+    <p>
+      You may view all of your created conda environments using <code>conda env list</code>. To remove an environment,
+      use <code>conda env remove -n 'your_env_name'</code>. For reference, all of your created environments are stored
+      in <code>/home/jovyan/.conda/envs/scipkg</code>. <a
+        href=https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html
+        target='_blank'>Here</a> is conda's guide to manageing environments, and <a
+        href=https://docs.conda.io/projects/conda/en/latest/commands.html target='_blank'>here</a> is the full command
+      reference.
+    </p>
+    <h2>What is a Jupyter kernel?</h2>
+    <p>
+      Jupyter kernels are language specific
+    </p>
+    <h2>Can packages be added or upgraded in the default environment?</h2>
+    <p>Yes, please open a new issue explaining your needs or a pull request adding/upgrading your packages at the <a
+        href="https://github.com/LibreTexts/default-env" target="_blank">default-env</a> repository.</p>
+    <h2>Can I recieve accouncements for downtime and other critical information about jupyter.libretexts.org?</h2>
+    <p>
+      If you wish to recieve updates from the JupyterTeam about possible downtime for jupyter.libretexts.org, you can
+      subscribe to our <a href=https://lists.ucdavis.edu/sympa/subscribe/flock-announce target='_blank'>emailing
+        list</a>. Just enter your email and you will recieve emails whenever we notify Hub users about downtime and
+      maintenance.
+    </p>
+    <h1>For Instructors</h1>
+    <h2>How do I distribute files to students?</h2>
+    <p>You can distribute files using <a href="https://jupyterhub.github.io/nbgitpuller/index.html"
+        target="_blank">nbgitpuller</a>. Please store your files in a GitHub repository and we will set up a custom
+      environment that will update the files whenever a student spawns a server. This is a good option since students
+      don't need to understand git, but keep in mind that nbgitpuller does have some <a
+        href="https://jupyterhub.github.io/nbgitpuller/topic/automatic-merging.html" target="_blank">limitations</a>.
+      Other options include hosting your files on an external site, like GitHub or Google Drive, where students can
+      download them.</p>
 
-      <h2>Can packages be added or upgraded in the default environment?</h2>
-      <p>Yes, please open a new issue explaining your needs or a pull request adding/upgrading your packages at the <a href="https://github.com/LibreTexts/default-env" target="_blank">default-env</a> repository.</p>
+    <h2>How do I set up custom environments for my class?</h2>
+    <p>If you are an instructor who wants to set up an environment with custom packages and kernels for your course,
+      please create one of the following configuration files and notify us of it by email at <a
+        href="mailto:jupyterteam@ucdavis.edu">jupyterteam@ucdavis.edu</a>:</p>
+    <ol>
+      <li>One or more configuration files supported by <a href="https://repo2docker.readthedocs.io/"
+          target="_blank">repo2docker</a> that list your desired packages. Supported configuration files are listed <a
+          href="https://repo2docker.readthedocs.io/en/latest/config_files.html" target="_blank">here</a>.</li>
+      <li>A <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">Dockerfile</a>. We recommend
+        using or building on top of a <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html"
+          target="_blank">Jupyter Docker Stack</a> which are already available to the community.</li>
+    </ol>
+    <p>For an example of packages that could be included, please look at the <a
+        href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#core-stacks"
+        target="_blank">Jupyter Core Stacks</a>.</p>
+  </section>
+</body>
 
-      <h2>How do I distribute files to students?</h2>
-      <p>You can distribute files using <a href="https://jupyterhub.github.io/nbgitpuller/index.html" target="_blank">nbgitpuller</a>. Please store your files in a GitHub repository and we will set up a custom environment that will update the files whenever a student spawns a server. This is a good option since students don't need to understand git, but keep in mind that nbgitpuller does have some <a href="https://jupyterhub.github.io/nbgitpuller/topic/automatic-merging.html" target="_blank">limitations</a>. Other options include hosting your files on an external site, like GitHub or Google Drive, where students can download them.</p>
-
-      <h2>How do I set up custom environments for my class?</h2>
-      <p>If you are an instructor who wants to set up an environment with custom packages and kernels for your course, please create one of the following configuration files and notify us of it by email at <a href="mailto:jupyterteam@ucdavis.edu">jupyterteam@ucdavis.edu</a>:</p>
-      <ol>
-        <li>One or more configuration files supported by <a href="https://repo2docker.readthedocs.io/" target="_blank">repo2docker</a> that list your desired packages. Supported configuration files are listed <a href="https://repo2docker.readthedocs.io/en/latest/config_files.html" target="_blank">here</a>.</li>
-        <li>A <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">Dockerfile</a>. We recommend using or building on top of a <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/index.html" target="_blank">Jupyter Docker Stack</a> which are already available to the community.</li>
-      </ol>
-      <p>For an example of packages that could be included, please look at the <a href="https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html#core-stacks" target="_blank">Jupyter Core Stacks</a>.</p>
-    </section>
-  </body>
 </html>
